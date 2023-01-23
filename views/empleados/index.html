@@ -1,0 +1,35 @@
+
+   <!--j.incl:Comando para incluir en este archivo el codigo de otro archivo-->
+    {% include 'header.html' %}
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Acciones </th>
+            </tr>
+        </thead>
+        <tbody>
+            <a class="btn btn-primary" href="create" role="button" style="margin-bottom: 5px;margin-top: 15px;">Crear Nuevo Usuario</a>
+            <!--Comando jfor de jinja-->
+           {% for empleado in empleados %}
+           <tr>
+            <td>{{empleado[0]}}</td>
+
+            <td>
+                <img  width="150" src="uploads/{{empleado[3]}}" alt="">
+            </td>
+            <td>{{empleado[1]}}</td>
+            <td>{{empleado[2]}}</td>
+            <td> 
+               <a href="/edit/{{empleado[0]}}"><img src="/uploads/settings.png" width="35" title="Editar Usuario" ></a> 
+              |
+                <a onclick=" return confirm('¿Esta seguro de eliminar este usuario?')" href="/destroy/{{empleado[0]}}"><img src="/uploads/user.png" width="35" title="Eliminar Usuario"></a>
+            </td>
+        </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+    {% include 'footer.html' %}

@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+<form method="post" action="/update" enctype="multipart/form-data"> <!--El atributo enctype="multipart/form-data" se utiliza en formularios cuando se va a trabajar con subida de archivos-->
+ 
+ <div class="card">
+    <div class="card-header">
+        Editar Empleado
+    </div>
+    <div class="card-body">
+        {% for dato in datos %}
+        <div class="form-group">
+            <label for="txtId">ID:</label>
+            <input type="text" class="form-control" name="txtId" id="txtId" value="{{dato[0]}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="txtNombre">Nombre:</label>
+            <input type="text" class="form-control" name="txtNombre" id="txtNombre" value="{{dato[1]}}">
+        </div>
+        <div class="form-group">
+            <label for="txtCorreo">Correo:</label>
+            <input type="email" class="form-control" name="txtCorreo" id="txtCorreo" value="{{dato[2]}}">
+        </div>
+        <div class="form-group">
+            <label for="txtFoto">Foto:</label>
+            <img src="/uploads/{{dato[3]}}" width="100" alt=""> editar por:
+            <input type="file" class="form-control" name="txtFoto" id="txtFoto">
+        </div>
+        {% endfor %}
+            <input type="submit" class="btn btn-primary" value="Modificar Empleado">
+    </div>
+ </div>
+    
+</form>
+{% include 'footer.html' %}

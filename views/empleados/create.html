@@ -1,0 +1,42 @@
+{% include 'header.html' %}
+{% with messages = get_flashed_messages()  %}
+
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+               {{message}}
+        {% endfor %}
+    </div>
+{% endif %}
+    
+{% endwith %}
+<!--b-form-enctype -->
+<form method="post" action="/store" enctype="multipart/form-data"> <!--El atributo enctype="multipart/form-data" se utiliza en formularios cuando se va a trabajar con subida de archivos-->
+    
+    <div class="card">
+        <div class="card-header">
+            Crear Empleado
+        </div>
+        <div class="card-body">
+            <h4 style="margin-bottom: 20px;">Datos del empleado</h4>
+            <div class="form-group">
+                <label for="txtNombre" style="font-weight: bold;">Nombre:</label>
+                <input class="form-control" type="text" name="txtNombre" id="txtNombre" >  
+            </div>
+            <div class="form-group">
+                <label for="txtCorreo" style="font-weight: bold;">Correo:</label>
+                <input class="form-control" type="text" name="txtCorreo" id="txtCorreo">  
+            </div>
+            <div class="form-group">
+                <label for="txtFoto" style="font-weight: bold;">Foto:</label>
+                <input class="form-control" type="file" name="txtFoto" id="txtFoto">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Agregar Empleado">
+        </div>
+    </div>
+    </div>
+    
+    
+    
+</form>
+{% include 'footer.html' %}
